@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Taviraj:wght@300&display=swap");
+
+:root {
+  --grey-100: #f8fafc;
+  --grey-200: #f1f5f9;
+  --grey-300: #e2e8f0;
+  --grey-400: #cbd5e1;
+  --grey-500: #94a3b8;
+  --grey-600: #64748b;
+  --grey-700: #475569;
+  --grey-800: #344256;
+  --grey-900: #1e293b;
+
+  --faded-100: #fbe1df;
+  --faded-200: #f8c3bf;
+  --faded-300: #f4a69e;
+  --faded-400: #f1887e;
+  --faded-500: #ed6a5e;
+
+  --secondary: #f1356d;
+
+  --font-size-1: 1rem;
+  --text-color: var(--dark-color);
+  --light-color: #fff;
+  --background-color: var(--grey-100);
+  --bodyfont-11: "Taviraj", sans-serif;
+
+  --max-width-1: 800px;
+
+  --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+html {
+  font-size: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1.75;
+  font-size: var(--font-size-1);
+  font-family: var(--bodyfont-11);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  /* display: inline-block; */
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: 0.4s;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.container {
+  max-width: var(--max-width-1);
+  overflow: auto;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  border-bottom: 1px solid var(--grey-300);
+}
+
+.navbar ul {
+  display: flex;
+  padding: 0 20px;
+}
+
+.navbar ul li {
+  padding-left: 20px;
+}
+
+.body {
+  margin-top: 2rem;
+  padding: 0 30px;
+}
+
+.blog {
+  margin: 20px 0;
+  padding: 0 5px;
+  border-left: 5px solid var(--secondary);
+  border-radius: 5px;
+}
+
+.blog a:hover {
+  color: var(--secondary);
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
