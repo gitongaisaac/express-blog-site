@@ -1,6 +1,8 @@
 /* Project dependacies */
 const express = require("express");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
+const blogRoutes = require("./routes/blogRoutes");
 
 /* Express app */
 const app = express();
@@ -10,44 +12,36 @@ app.set("view engine", "ejs");
 
 /* Middleware */
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
-/* Listen */
-app.listen(3000);
+/* MongoDb */
+const passWord = encodeURIComponent("#@1zzy!!!");
+const URI = `mongodb+srv://izzy:${passWord}@node.30ga7wd.mongodb.net/blog-site?retryWrites=true&w=majority`;
 
-const blogs = [
-  {
-    id: 1,
-    title: "May's Party",
-    snippet: "Come and have a good time.",
-    body: "The best party will ever attend.",
-  },
-  {
-    id: 1,
-    title: "Mountain Hike",
-    snippet: "Ready to be exhausted and wasted.",
-    body: "This will be a bike mountain hike. Fun is at the top of the list. ",
-  },
-  {
-    id: 1,
-    title: "Stock seminar",
-    snippet: "For those of you who love investing.",
-    body: "This is an investing class form nube to pro by the end of the class.",
-  },
-];
+/* MongoDb Connection */
+mongoose
+  .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then((result) => {
+    app.listen(3000);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
+/* Other Routes */
 app.get("/", (req, res) => {
-  res.render("index", { title: "Home", blogs: blogs });
+  res.redirect("/blogs");
 });
 
 app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
 });
 
-app.get("/create", (req, res) => {
-  res.render("create", { title: "New Blog" });
-});
+/* Blog Routes */
+app.use("/blogs", blogRoutes);
 
+/* Not Found Routes */
 app.use((req, res) => {
   res.status(404).render("404", { title: "Not Found" });
 });

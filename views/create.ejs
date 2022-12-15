@@ -6,7 +6,24 @@
       <%- include('./partials/nav.ejs') %>
 
       <div class="body create">
-        <h2>Create Page</h2>
+        <h2>Add a new blog</h2>
+        <form action="/blogs" method="POST" class="form">
+          <div class="form-control">
+            <label>Title:</label>
+            <input type="text" name="title" id="title" />
+          </div>
+
+          <div class="form-control">
+            <label>Snippet:</label>
+            <input type="text" name="snippet" id="snippet" />
+          </div>
+
+          <div class="form-control">
+            <label>Body:</label>
+            <textarea name="body" id="body"></textarea>
+          </div>
+          <button class="btn btn-post">Submit</button>
+        </form>
       </div>
 
       <%- include('./partials/footer.ejs') %>
